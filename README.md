@@ -210,9 +210,10 @@ cp .env.example .env
 
 ### Running the App
 
+#### Development (Separate Frontend & Backend)
 ```bash
 # Terminal 1 — Start the backend server
-node server/index.js
+npm run server
 
 # Terminal 2 — Start the frontend dev server
 npm run dev
@@ -220,6 +221,14 @@ npm run dev
 
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:3001
+
+#### Production (Merged Frontend & Backend)
+```bash
+# Build and start the merged server
+npm start
+```
+
+- **Full App**: http://localhost:3000
 
 > 💡 The app works without a Gemini API key using intelligent fallback responses. Add your key for full AI-powered features.
 
@@ -229,6 +238,8 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+Or use `npm start` to build and serve the merged app.
 
 ---
 

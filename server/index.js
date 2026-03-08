@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import path from 'path';
 
 import { initGemini } from './ai/gemini.js';
 import { initDB } from './db/database.js';
@@ -13,7 +14,7 @@ import codeRoutes from './routes/code.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({ origin: true, credentials: true }));
@@ -40,6 +41,14 @@ app.use('/api/chat', chatRoutes);
 app.use('/api/knowledge', knowledgeRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/code', codeRoutes);
+
+// Serve static files from the React app build directory
+app.use(express.static(path.join(process.cwd(), 'dist')));
+
+// Catch all handler: send back React's index.html file for any non-API routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(process.cwd(), 'dist', 'index.html'));
+});
 
 // Health check
 app.get('/api/health', (req, res) => {

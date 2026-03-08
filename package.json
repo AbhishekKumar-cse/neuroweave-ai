@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
+    "start": "npm run build && npm run server",
     "dev:full": "concurrently \"npm run server\" \"npm run dev\"",
     "seed": "node server/db/seed.js"
   },
