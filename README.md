@@ -243,7 +243,39 @@ Or use `npm start` to build and serve the merged app.
 
 ---
 
-## 📡 API Endpoints
+## � Deployment
+
+### Deploy to Railway (Recommended)
+
+Railway supports full Node.js servers and is the easiest deployment option:
+
+1. **Sign up** at [railway.app](https://railway.app)
+2. **Connect your GitHub repo** in Railway dashboard
+3. **Add environment variables**:
+   - `GEMINI_API_KEY` = your API key
+   - `PORT` = 3000 (optional, defaults to 3000)
+4. **Deploy** — Railway automatically detects and runs `npm start`
+
+✅ Done! Your app will be live at `https://your-project.up.railway.app`
+
+### Deploy to Render
+
+Alternative to Railway:
+
+1. **Sign up** at [render.com](https://render.com)
+2. **Create a new Web Service** and connect your GitHub repo
+3. **Set Build Command**: `npm install && npm run build`
+4. **Set Start Command**: `npm start`
+5. **Add Environment Variable**: `GEMINI_API_KEY`
+6. **Deploy** — Render will build and start the app
+
+✅ Done! Your app will be live at `https://your-project.onrender.com`
+
+> ⚠️ **Note**: Vercel doesn't support long-running Node.js servers. For Vercel, you'd need to rewrite the backend as serverless functions (more complex). Railway/Render are simpler alternatives.
+
+---
+
+## �📡 API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
